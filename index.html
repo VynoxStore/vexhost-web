@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VexHost — Sedang Dalam Pengembangan</title>
+  <link rel="icon" type="image/png" href="assets/logo.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080c14;
+      --surface: #0e1520;
+      --border: #1a2540;
+      --accent: #3b82f6;
+      --accent2: #6366f1;
+      --text: #e8edf5;
+      --muted: #64748b;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Animated grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 0;
+    }
+
+    /* Glowing orb */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      background: rgba(8,12,20,0.7);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 10;
+    }
+
+    nav img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    nav span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px 24px;
+      max-width: 600px;
+    }
+
+    .logo-wrap {
+      margin-bottom: 28px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .logo-wrap img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 24px rgba(59,130,246,0.5));
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.25);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+
+    .badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .card strong {
+      color: var(--text);
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      text-align: center;
+      padding: 14px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: rgba(8,12,20,0.7);
+      backdrop-filter: blur(12px);
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <img src="assets/logo.png" alt="VexHost Logo" onerror="this.style.display='none'"/>
+    <span>VexHost</span>
+  </nav>
+
+  <main>
+    <div class="badge">Under Development</div>
+
+    <div class="logo-wrap">
+      <img src="assets/logo.png" alt="VexHost" onerror="this.style.display='none'"/>
+    </div>
+
+    <h1>Website Sedang<br/><span>Dalam Pengembangan</span></h1>
+
+    <p>
+      Kami sedang membangun sesuatu yang lebih baik untuk kamu.<br/>
+      VexHost hadir dengan layanan hosting terbaik — <em>stay tuned!</em>
+    </p>
+
+    <div class="card">
+      Punya pertanyaan? Hubungi kami di <strong>t.me/vexhosts</strong>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 VexHost &mdash; All rights reserved
+  </footer>
+
+</body>
+</html>
